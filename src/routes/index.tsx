@@ -10,6 +10,15 @@ import impacto from "@/assets/impacto.jpg";
 import cuidado from "@/assets/cuidado.jpg";
 import ventosa from "@/assets/ventosa.jpg";
 import bandagem from "@/assets/bandagem.jpg";
+import sobre from "@/assets/sobre.jpg";
+import metodo from "@/assets/metodo.jpg";
+import reabilitacao from "@/assets/reabilitacao.jpg";
+import miofascial from "@/assets/miofascial.jpg";
+import acupuntura from "@/assets/acupuntura.jpg";
+import massagem from "@/assets/massagem.jpg";
+import estrutura1 from "@/assets/estrutura-1.jpg";
+import estrutura2 from "@/assets/estrutura-2.jpg";
+import estrutura3 from "@/assets/estrutura-3.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -65,16 +74,16 @@ const STEPS = [
 ];
 
 const SERVICES = [
-  { t: "Reabilitação", d: "Parte dos serviços oferecidos pela Fit You, conduzida com atenção individualizada e respeito ao momento de cada pessoa.", img: impacto },
-  { t: "Liberação miofascial", d: "Técnica manual utilizada dentro da nossa proposta de cuidado corporal individualizado.", img: cuidado },
+  { t: "Reabilitação", d: "Parte dos serviços oferecidos pela Fit You, conduzida com atenção individualizada e respeito ao momento de cada pessoa.", img: reabilitacao },
+  { t: "Liberação miofascial", d: "Técnica manual utilizada dentro da nossa proposta de cuidado corporal individualizado.", img: miofascial },
   { t: "Bandagem funcional", d: "Recurso utilizado de acordo com as necessidades de cada pessoa.", img: bandagem },
-  { t: "Acupuntura", d: "Uma das práticas disponíveis no Studio, sempre com atendimento individualizado.", img: ventosa },
-  { t: "Massagem", d: "Um momento de cuidado corporal, atenção e bem-estar.", img: cuidado },
+  { t: "Acupuntura", d: "Uma das práticas disponíveis no Studio, sempre com atendimento individualizado.", img: acupuntura },
+  { t: "Massagem", d: "Um momento de cuidado corporal, atenção e bem-estar.", img: massagem },
   { t: "Ventosaterapia", d: "Uma das técnicas oferecidas pela Fit You dentro de sua proposta de cuidado.", img: ventosa },
 ];
 
 // PLACEHOLDER: substituir por fotos reais do espaço da Fit You Studio.
-const GALLERY = [hero, funcional, musculacao, aerobico];
+const GALLERY = [estrutura1, estrutura2, estrutura3];
 
 function useReveal() {
   useEffect(() => {
@@ -214,14 +223,14 @@ function About() {
         <div className="mt-14 grid gap-px bg-border sm:grid-cols-3">
           {["Individualização", "Acompanhamento", "Evidências"].map((c, i) => (
             <div key={c} className="bg-background py-6 pr-4 sm:px-4 sm:first:pl-0">
-              <span className="text-xs font-bold text-gold">0{i + 1}</span>
+              <span className="text-xs font-bold text-gold">0{i + 1} —</span>
               <p className="mt-2 font-bold text-graphite">{c}</p>
             </div>
           ))}
         </div>
       </div>
       <div className="reveal relative lg:col-span-6">
-        <img src={musculacao} alt="Acompanhamento durante treino" loading="lazy" width={1200} height={1408} className="aspect-[4/5] w-full object-cover lg:ml-auto lg:w-[85%]" />
+        <img src={sobre} alt="Treinadora orientando a postura de um aluno" loading="lazy" width={1200} height={1408} className="aspect-[4/5] w-full object-cover lg:ml-auto lg:w-[85%]" />
         <div className="absolute -bottom-8 left-0 hidden w-56 bg-wine p-6 text-primary-foreground md:block">
           <p className="serif-accent text-2xl leading-snug">"Existe uma proposta pensada para mim."</p>
         </div>
@@ -243,12 +252,13 @@ function Trainings() {
         <div className="mt-20 space-y-24 lg:space-y-32">
           {TRAININGS.map((t, i) => (
             <article key={t.n} className={`reveal grid items-center gap-10 lg:grid-cols-12 ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}>
-              <div className="group relative overflow-hidden lg:col-span-7">
+              <div className="group relative overflow-hidden border-l-2 border-wine lg:col-span-7">
                 <img src={t.img} alt={t.t} loading="lazy" width={1200} height={1408} className="aspect-[4/3] w-full object-cover transition duration-1000 group-hover:scale-105" />
               </div>
               <div className={`lg:col-span-5 ${i % 2 ? "lg:pr-12" : "lg:pl-12"}`}>
-                <span className="display block text-8xl text-wine/15 md:text-9xl">{t.n}</span>
-                <h3 className="display -mt-8 text-4xl uppercase text-graphite md:text-5xl">{t.t}</h3>
+                <span className="display block text-8xl text-gold/50 md:text-9xl">{t.n}</span>
+                <p className="eyebrow relative">{t.n} — {t.t}</p>
+                <h3 className="display mt-3 text-4xl uppercase text-graphite md:text-5xl">{t.t}</h3>
                 <div className="mt-6 h-px w-16 bg-wine" />
                 <p className="mt-6 max-w-sm text-lg leading-relaxed text-muted-foreground">{t.d}</p>
               </div>
@@ -261,22 +271,19 @@ function Trainings() {
 }
 
 function Impact() {
-  const [y, setY] = useState(0);
-  useEffect(() => {
-    const f = () => setY(window.scrollY);
-    window.addEventListener("scroll", f, { passive: true });
-    return () => window.removeEventListener("scroll", f);
-  }, []);
   return (
-    <section className="relative h-[85vh] overflow-hidden">
-      <img src={impacto} alt="Treinamento acompanhado" loading="lazy" width={1920} height={1088}
-        className="absolute inset-0 h-[120%] w-full object-cover" style={{ transform: `translateY(${(y % 4000) * -0.04}px)` }} />
-      <div className="absolute inset-0 bg-gradient-to-r from-graphite/85 via-graphite/50 to-transparent" />
-      <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-center px-6">
-        <h2 className="reveal display max-w-3xl text-5xl text-cream md:text-7xl">
-          Não existe treino padrão <span className="serif-accent text-gold">para pessoas diferentes.</span>
-        </h2>
-        <p className="reveal mt-8 max-w-md text-lg text-cream/80">Cada processo começa entendendo quem está treinando.</p>
+    <section className="relative overflow-hidden bg-wine text-cream">
+      <div className="grid lg:grid-cols-[55fr_45fr]">
+        <div className="relative flex flex-col justify-center px-6 py-28 lg:py-40 lg:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] lg:pr-16">
+          <p className="eyebrow reveal text-gold">Fit You • Fitness Studio</p>
+          <h2 className="reveal display mt-8 max-w-2xl text-5xl md:text-7xl">
+            Não existe treino padrão <span className="serif-accent text-gold">para pessoas diferentes.</span>
+          </h2>
+          <div className="reveal mt-10 h-px w-24 bg-gold" />
+          <p className="reveal mt-8 max-w-md text-lg text-cream/80">Cada processo começa entendendo quem está treinando.</p>
+          <p className="mt-16 text-xs font-bold tracking-[0.3em] text-cream/40">MOVIMENTO • CUIDADO • EVOLUÇÃO</p>
+        </div>
+        <img src={impacto} alt="Treinador acompanhando aluno no agachamento" loading="lazy" width={1920} height={1088} className="h-80 w-full object-cover object-[70%_center] lg:h-full" />
       </div>
     </section>
   );
@@ -291,12 +298,13 @@ function Method() {
           Individualizar antes de <span className="serif-accent text-wine">intensificar.</span>
         </h2>
       </div>
+      <img src={metodo} alt="Treinadora corrigindo o alinhamento do movimento" loading="lazy" width={1600} height={1008} className="reveal mt-16 aspect-[21/9] w-full object-cover" />
       <div className="relative mt-20 grid gap-12 lg:grid-cols-4 lg:gap-8">
         <div className="absolute left-0 right-0 top-6 hidden h-px bg-gradient-to-r from-transparent via-wine to-transparent lg:block" />
         <div className="absolute bottom-0 left-6 top-0 w-px bg-wine/30 lg:hidden" />
         {STEPS.map(([n, t, d]) => (
           <div key={n} className="reveal relative pl-20 lg:pl-0 lg:text-center">
-            <div className="absolute left-0 top-0 grid h-12 w-12 place-items-center rounded-full border border-wine bg-background text-sm font-bold text-wine lg:relative lg:mx-auto">
+            <div className="absolute left-0 top-0 grid h-12 w-12 place-items-center rounded-full border border-wine bg-wine text-sm font-bold text-cream lg:relative lg:mx-auto">
               {n}
             </div>
             <h3 className="display text-2xl uppercase text-graphite lg:mt-8">{t}</h3>
@@ -365,20 +373,21 @@ function Services() {
 
 function Pillars() {
   const P = [
-    ["Treinar", "Movimento orientado e individualizado."],
-    ["Cuidar", "Serviços que complementam uma experiência voltada ao cuidado corporal."],
-    ["Evoluir", "Um processo construído respeitando cada pessoa."],
+    ["Treinar", "Movimento orientado e individualizado.", "bg-sand text-graphite", "text-muted-foreground"],
+    ["Cuidar", "Serviços que complementam uma experiência voltada ao cuidado corporal.", "bg-wine text-cream", "text-cream/75"],
+    ["Evoluir", "Um processo construído respeitando cada pessoa.", "bg-sand", "text-muted-foreground"],
   ];
   return (
-    <section className="bg-sand py-28">
-      <div className="mx-auto max-w-7xl space-y-14 px-6">
-        {P.map(([w, d], i) => (
-          <div key={w} className={`reveal flex flex-col gap-4 md:flex-row md:items-end md:gap-12 ${i === 1 ? "md:justify-center" : i === 2 ? "md:justify-end" : ""}`}>
-            <span className={`display text-[18vw] uppercase leading-none md:text-[9rem] ${i === 1 ? "text-wine" : i === 2 ? "outline-text" : "text-graphite"}`}>{w}</span>
-            <p className="max-w-xs pb-4 text-muted-foreground">{d}</p>
+    <section>
+      {P.map(([w, d, bg, tc], i) => (
+        <div key={w} className={bg}>
+          <div className={`reveal mx-auto flex max-w-7xl flex-col gap-4 px-6 py-12 md:flex-row md:items-end md:gap-12 ${i === 1 ? "md:justify-center" : i === 2 ? "md:justify-end" : ""}`}>
+            <span className="text-sm font-bold text-gold">0{i + 1}</span>
+            <span className={`display text-[18vw] uppercase leading-none md:text-[9rem] ${i === 2 ? "outline-text" : ""}`}>{w}</span>
+            <p className={`max-w-xs pb-4 ${tc}`}>{d}</p>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </section>
   );
 }
@@ -386,7 +395,7 @@ function Pillars() {
 function Structure() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-28 lg:py-36">
-      <div className="reveal mb-14 flex flex-wrap items-end justify-between gap-6">
+      <div className="reveal mb-14 border-t border-wine pt-10 flex flex-wrap items-end justify-between gap-6">
         <h2 className="display max-w-2xl text-4xl text-graphite md:text-6xl">
           Um espaço para cuidar do seu <span className="serif-accent text-wine">movimento.</span>
         </h2>
@@ -396,7 +405,7 @@ function Structure() {
       <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2">
         <img src={GALLERY[0]} alt="Espaço Fit You (ilustrativo)" loading="lazy" className="reveal h-full min-h-80 w-full object-cover md:col-span-2 md:row-span-2" />
         <img src={GALLERY[1]} alt="Espaço Fit You (ilustrativo)" loading="lazy" className="reveal aspect-[4/3] w-full object-cover" />
-        <img src={GALLERY[3]} alt="Espaço Fit You (ilustrativo)" loading="lazy" className="reveal aspect-[4/3] w-full object-cover" />
+        <img src={GALLERY[2]} alt="Espaço Fit You (ilustrativo)" loading="lazy" className="reveal aspect-[4/3] w-full object-cover" />
       </div>
     </section>
   );
@@ -454,7 +463,7 @@ function Location() {
 
 function Footer() {
   return (
-    <footer className="bg-wine-deep text-cream">
+    <footer className="border-t-2 border-gold/60 bg-graphite text-cream">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-3">
         <div>
           <div className="inline-block bg-cream p-4"><img src={logo} alt="Fit You Fitness Studio" className="h-16 w-auto" /></div>

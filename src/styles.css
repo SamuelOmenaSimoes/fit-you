@@ -164,6 +164,7 @@ body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
 
 @utility eyebrow {
   font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 700; color: var(--wine);
+  &::before { content: ""; display: inline-block; width: 1.75rem; height: 1px; margin-right: 0.75rem; vertical-align: middle; background: var(--gold); }
 }
 @utility display {
   font-weight: 800; letter-spacing: -0.035em; line-height: 0.98;
