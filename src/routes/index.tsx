@@ -482,7 +482,7 @@ function FloatingWA() {
     <a href={WA_URL} target="_blank" rel="noreferrer" aria-label="Fale com a Fit You"
       className="group fixed bottom-6 right-6 z-40 flex items-center gap-0 overflow-hidden rounded-full bg-wine p-4 text-primary-foreground shadow-lg ring-1 ring-gold/40 transition-all hover:gap-3 hover:pr-6">
       <MessageCircle className="h-5 w-5 shrink-0" />
-      <span className="max-w-0 whitespace-nowrap text-sm font-semibold transition-all duration-300 group-hover:max-w-40">Fale com a Fit You</span>
+      <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold transition-all duration-300 group-hover:max-w-40">Fale com a Fit You</span>
     </a>
   );
 }
